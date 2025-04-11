@@ -1,5 +1,7 @@
-class GildedRose {
-    Item[] items;
+package be.yorian;
+
+public class GildedRose {
+    private Item[] items;
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -56,5 +58,9 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    public Item[] getItems() {
+        return items;
     }
 }

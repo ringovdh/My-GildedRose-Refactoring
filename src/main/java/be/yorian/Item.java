@@ -1,3 +1,5 @@
+package be.yorian;
+
 public class Item {
 
     public String name;
