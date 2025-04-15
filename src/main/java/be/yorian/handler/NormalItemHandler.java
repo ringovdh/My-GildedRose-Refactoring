@@ -2,16 +2,28 @@ package be.yorian.handler;
 
 import be.yorian.Item;
 
-public class NormalItemHandler extends ItemHandler {
+import static be.yorian.util.GildedRoseUtils.decreaseQuality;
+import static be.yorian.util.GildedRoseUtils.isSellInDatePassed;
+
+public class NormalItemHandler implements ItemHandler {
 
     @Override
     public void updateItem(Item item) {
-        if (item.quality > 0) {
-            item.quality--;
-        }
         item.sellIn--;
-        if (item.sellIn < 0 && item.quality > 0) {
-            item.quality--;
-        }
+        item.quality = calculateQuality(item);
+    }
+
+    /**
+     * Calculates the new quality of the item.
+     * lost 1 if sellIn date is not passed,
+     * lost 2 if sellIn date is passed
+     * quality has a min value of 0
+     *
+     * @param item
+     * @return new calculated quality value
+     */
+    private int calculateQuality(Item item) {
+        int qualityLost = isSellInDatePassed(item.sellIn) ? 2 : 1;
+        return decreaseQuality(item.quality, qualityLost);
     }
 }

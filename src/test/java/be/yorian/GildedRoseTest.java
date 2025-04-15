@@ -1,8 +1,11 @@
-import be.yorian.GildedRose;
-import be.yorian.Item;
+package be.yorian;
+
 import org.junit.jupiter.api.Test;
 
-import static be.yorian.mother.GildedRoseMother.*;
+import static be.yorian.mother.GildedRoseMother.createGildedRoseWithAgedBrie;
+import static be.yorian.mother.GildedRoseMother.createGildedRoseWithBackstagePasses;
+import static be.yorian.mother.GildedRoseMother.createGildedRoseWithNormalItem;
+import static be.yorian.mother.GildedRoseMother.createGildedRoseWithSulfuras;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
@@ -15,10 +18,10 @@ class GildedRoseTest {
     }
 
     @Test
-    void normalItem_doNotDecreasesInQuality_whenNegative_test() {
-        GildedRose app = createGildedRoseWithNormalItem(5, -1);
+    void normalItem_doNotDecreasesInQuality_whenQualityIsPassed_test() {
+        GildedRose app = createGildedRoseWithNormalItem(5, 0);
         app.updateQuality();
-        assertEquals(-1, app.getItems()[0].quality);
+        assertEquals(0, app.getItems()[0].quality);
         assertEquals(4, app.getItems()[0].sellIn);
     }
 
@@ -27,6 +30,13 @@ class GildedRoseTest {
         GildedRose app = createGildedRoseWithNormalItem(0, 10);
         app.updateQuality();
         assertEquals(8, app.getItems()[0].quality);
+    }
+
+    @Test
+    void normalItem_decreasesInQuality_butNeverNegative_test() {
+        GildedRose app = createGildedRoseWithNormalItem(0, 1);
+        app.updateQuality();
+        assertEquals(0, app.getItems()[0].quality);
     }
 
     @Test
@@ -114,10 +124,10 @@ class GildedRoseTest {
 
     @Test
     void backstagePasses_increasesQualityBy1_whenSellInHigherThan10_test() {
-        GildedRose app = createGildedRoseWithBackstagePasses(11, 6);
+        GildedRose app = createGildedRoseWithBackstagePasses(12, 6);
         app.updateQuality();
         assertEquals(7, app.getItems()[0].quality);
-        assertEquals(10, app.getItems()[0].sellIn);
+        assertEquals(11, app.getItems()[0].sellIn);
     }
 
     @Test
