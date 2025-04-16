@@ -10,11 +10,11 @@ public class GildedRoseUtils {
         return sellIn < PASSED_SELLIN;
     }
 
-    public static int decreaseQuality(int quality, int decreaseValue) {
+    public static int decreaseQualityUntilMinimum(int quality, int decreaseValue) {
         return Math.max(quality - decreaseValue, MIN_QUALITY);
     }
 
-    public static int increaseQuality(int quality, int increaseValue) {
+    public static int increaseQualityUntilMaximum(int quality, int increaseValue) {
         return Math.min(quality + increaseValue, MAX_QUALITY);
     }
 

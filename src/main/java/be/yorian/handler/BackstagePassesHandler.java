@@ -2,7 +2,7 @@ package be.yorian.handler;
 
 import be.yorian.Item;
 
-import static be.yorian.util.GildedRoseUtils.increaseQuality;
+import static be.yorian.util.GildedRoseUtils.increaseQualityUntilMaximum;
 
 public class BackstagePassesHandler implements ItemHandler {
 
@@ -20,7 +20,7 @@ public class BackstagePassesHandler implements ItemHandler {
      * quality is 0 if sellIn is 0
      * quality has a max value of 50
      *
-     * @param item
+     * @param item a backstage pass
      * @return new calculated quality value
      */
     private int calculateQuality(Item item) {
@@ -34,7 +34,7 @@ public class BackstagePassesHandler implements ItemHandler {
         } else {
             return 0;
         }
-        return increaseQuality(item.quality, qualityGained);
+        return increaseQualityUntilMaximum(item.quality, qualityGained);
     }
 
 

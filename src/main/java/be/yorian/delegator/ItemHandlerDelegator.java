@@ -3,6 +3,7 @@ package be.yorian.delegator;
 import be.yorian.Item;
 import be.yorian.handler.AgedBrieHandler;
 import be.yorian.handler.BackstagePassesHandler;
+import be.yorian.handler.ConjuredItemHandler;
 import be.yorian.handler.ItemHandler;
 import be.yorian.handler.NormalItemHandler;
 import be.yorian.handler.SulfurasHandler;
@@ -13,6 +14,7 @@ public class ItemHandlerDelegator {
     private BackstagePassesHandler backstagePassesHandler;
     private SulfurasHandler sulfurasHandler;
     private NormalItemHandler normalItemHandler;
+    private ConjuredItemHandler conjuredItemHandler;
 
     public ItemHandler getHandler(Item item) {
         switch (item.name) {
@@ -25,6 +27,9 @@ public class ItemHandlerDelegator {
             case "Sulfuras, Hand of Ragnaros" -> {
                 return getSulfurasHandler();
             }
+            case "Conjured Mana Cake" -> {
+                return getConjuredItemHandler();
+            }
             default -> {
                 return getNormalItemHandler();
             }
@@ -36,6 +41,13 @@ public class ItemHandlerDelegator {
             this.normalItemHandler = new NormalItemHandler();
         }
         return this.normalItemHandler;
+    }
+
+    private ItemHandler getConjuredItemHandler() {
+        if (this.conjuredItemHandler == null) {
+            this.conjuredItemHandler = new ConjuredItemHandler();
+        }
+        return this.conjuredItemHandler;
     }
 
     private ItemHandler getSulfurasHandler() {

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static be.yorian.mother.GildedRoseMother.createGildedRoseWithAgedBrie;
 import static be.yorian.mother.GildedRoseMother.createGildedRoseWithBackstagePasses;
+import static be.yorian.mother.GildedRoseMother.createGildedRoseWithConjuredItem;
 import static be.yorian.mother.GildedRoseMother.createGildedRoseWithNormalItem;
 import static be.yorian.mother.GildedRoseMother.createGildedRoseWithSulfuras;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,14 +16,6 @@ class GildedRoseTest {
         GildedRose app = createGildedRoseWithNormalItem(5, 10);
         app.updateQuality();
         assertEquals(9, app.getItems()[0].quality);
-    }
-
-    @Test
-    void normalItem_doNotDecreasesInQuality_whenQualityIsPassed_test() {
-        GildedRose app = createGildedRoseWithNormalItem(5, 0);
-        app.updateQuality();
-        assertEquals(0, app.getItems()[0].quality);
-        assertEquals(4, app.getItems()[0].sellIn);
     }
 
     @Test
@@ -143,4 +136,38 @@ class GildedRoseTest {
         app.updateQuality();
         assertEquals(0, app.getItems()[0].quality);
     }
+
+    @Test
+    void conjuredItem_decreasesSellIn_test() {
+        GildedRose app = createGildedRoseWithConjuredItem(2, 10);
+        app.updateQuality();
+        assertEquals(1, app.getItems()[0].sellIn);
+    }
+
+    @Test
+    void conjuredItem_decreasesQuality_test() {
+        GildedRose app = createGildedRoseWithConjuredItem(2, 10);
+        app.updateQuality();
+        assertEquals(1, app.getItems()[0].sellIn);
+        assertEquals(8, app.getItems()[0].quality);
+    }
+
+    @Test
+    void conjuredItem_minQualityIs0_test() {
+        GildedRose app = createGildedRoseWithConjuredItem(2, 0);
+        app.updateQuality();
+        assertEquals(1, app.getItems()[0].sellIn);
+        assertEquals(0, app.getItems()[0].quality);
+    }
+
+    @Test
+    void conjuredItem_decreasesTwiceInQuality_whenSellInIsPassed_test() {
+        GildedRose app = createGildedRoseWithConjuredItem(0, 10);
+        app.updateQuality();
+        assertEquals(-1, app.getItems()[0].sellIn);
+        assertEquals(6, app.getItems()[0].quality);
+    }
+
+
+
 }

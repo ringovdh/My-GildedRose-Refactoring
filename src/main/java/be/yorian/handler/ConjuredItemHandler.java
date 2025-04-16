@@ -5,7 +5,7 @@ import be.yorian.Item;
 import static be.yorian.util.GildedRoseUtils.decreaseQualityUntilMinimum;
 import static be.yorian.util.GildedRoseUtils.isSellInDatePassed;
 
-public class NormalItemHandler implements ItemHandler {
+public class ConjuredItemHandler implements ItemHandler {
 
     @Override
     public void updateItem(Item item) {
@@ -15,15 +15,15 @@ public class NormalItemHandler implements ItemHandler {
 
     /**
      * Calculates the new quality of the item.
-     * lost 1 if sellIn date is not passed,
-     * lost 2 if sellIn date is passed
+     * lost 2 if sellIn date is not passed,
+     * lost 4 if sellIn date is passed
      * quality has a min value of 0
      *
-     * @param item a normalItem
+     * @param item a conjured item
      * @return new calculated quality value
      */
     private int calculateQuality(Item item) {
-        int qualityLost = isSellInDatePassed(item.sellIn) ? 2 : 1;
+        int qualityLost = isSellInDatePassed(item.sellIn) ? 4 : 2;
         return decreaseQualityUntilMinimum(item.quality, qualityLost);
     }
 }

@@ -2,7 +2,7 @@ package be.yorian.handler;
 
 import be.yorian.Item;
 
-import static be.yorian.util.GildedRoseUtils.increaseQuality;
+import static be.yorian.util.GildedRoseUtils.increaseQualityUntilMaximum;
 import static be.yorian.util.GildedRoseUtils.isSellInDatePassed;
 
 public class AgedBrieHandler implements ItemHandler {
@@ -20,11 +20,11 @@ public class AgedBrieHandler implements ItemHandler {
      * add 2 if sellIn date is passed
      * quality has a max value of 50
      *
-     * @param item
+     * @param item agedBrie
      * @return new calculated quality value
      */
     private int calculateQuality(Item item) {
         int qualityGained = isSellInDatePassed(item.sellIn) ? 2 : 1;
-        return increaseQuality(item.quality, qualityGained);
+        return increaseQualityUntilMaximum(item.quality, qualityGained);
     }
 }

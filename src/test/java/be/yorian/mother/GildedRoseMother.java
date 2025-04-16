@@ -5,6 +5,7 @@ import be.yorian.Item;
 
 import static be.yorian.mother.ItemMother.createAgedBrieItem;
 import static be.yorian.mother.ItemMother.createBackstagePassesItem;
+import static be.yorian.mother.ItemMother.createConjuredItem;
 import static be.yorian.mother.ItemMother.createNormalItem;
 import static be.yorian.mother.ItemMother.createSulfurasItem;
 
@@ -27,6 +28,11 @@ public class GildedRoseMother {
 
     public static GildedRose createGildedRoseWithBackstagePasses(int sellIn, int quality) {
         Item[] items = new Item[]{ createBackstagePassesItem(sellIn, quality) };
+        return new GildedRose(items);
+    }
+
+    public static GildedRose createGildedRoseWithConjuredItem(int sellIn, int quality) {
+        Item[] items = new Item[]{ createConjuredItem(sellIn, quality) };
         return new GildedRose(items);
     }
 }
