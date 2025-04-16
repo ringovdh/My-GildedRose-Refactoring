@@ -1,5 +1,4 @@
-import be.yorian.GildedRose;
-import be.yorian.Item;
+package be.yorian;
 
 public class TexttestFixture {
     public static void main(String[] args) {

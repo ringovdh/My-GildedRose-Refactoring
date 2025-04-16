@@ -12,27 +12,27 @@ import static be.yorian.mother.ItemMother.createSulfurasItem;
 public class GildedRoseMother {
 
     public static GildedRose createGildedRoseWithNormalItem(int sellIn, int quality) {
-        Item[] items = new Item[]{ createNormalItem(sellIn, quality) };
+        Item[] items = new Item[]{createNormalItem(sellIn, quality)};
         return new GildedRose(items);
     }
 
     public static GildedRose createGildedRoseWithAgedBrie(int sellIn, int quality) {
-        Item[] items = new Item[] { createAgedBrieItem(sellIn, quality) };
+        Item[] items = new Item[]{createAgedBrieItem(sellIn, quality)};
         return new GildedRose(items);
     }
 
     public static GildedRose createGildedRoseWithSulfuras(int sellIn, int quality) {
-        Item[] items = new Item[]{ createSulfurasItem(sellIn, quality) };
+        Item[] items = new Item[]{createSulfurasItem(sellIn, quality)};
         return new GildedRose(items);
     }
 
     public static GildedRose createGildedRoseWithBackstagePasses(int sellIn, int quality) {
-        Item[] items = new Item[]{ createBackstagePassesItem(sellIn, quality) };
+        Item[] items = new Item[]{createBackstagePassesItem(sellIn, quality)};
         return new GildedRose(items);
     }
 
     public static GildedRose createGildedRoseWithConjuredItem(int sellIn, int quality) {
-        Item[] items = new Item[]{ createConjuredItem(sellIn, quality) };
+        Item[] items = new Item[]{createConjuredItem(sellIn, quality)};
         return new GildedRose(items);
     }
 }

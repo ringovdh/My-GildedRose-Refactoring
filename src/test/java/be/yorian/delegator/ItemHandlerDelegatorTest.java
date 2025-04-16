@@ -25,7 +25,7 @@ class ItemHandlerDelegatorTest {
     private ItemHandlerDelegator delegator;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         this.delegator = new ItemHandlerDelegator();
     }
 
@@ -64,6 +64,5 @@ class ItemHandlerDelegatorTest {
     void getHandlerForConjuredItem_returnsSameInstance_test(Item item1, Item item2, String title) {
         assertEquals(delegator.getHandler(item1), delegator.getHandler(item2));
     }
-
 
 }
