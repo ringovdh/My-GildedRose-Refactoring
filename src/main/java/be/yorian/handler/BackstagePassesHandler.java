@@ -12,17 +12,6 @@ public class BackstagePassesHandler implements ItemHandler {
         item.quality = calculateQuality(item);
     }
 
-    /**
-     * Calculates the new quality of the item.
-     * add 1 if sellIn is greater than 10,
-     * add 2 if sellIn is between 5 and 10,
-     * add 3 if sellIn is between 0 and 5
-     * quality is 0 if sellIn is 0
-     * quality has a max value of 50
-     *
-     * @param item a backstage pass
-     * @return new calculated quality value
-     */
     private int calculateQuality(Item item) {
         int qualityGained;
         if (item.sellIn > 10) {

@@ -14,15 +14,6 @@ public class AgedBrieHandler implements ItemHandler {
         item.quality = calculateQuality(item);
     }
 
-    /**
-     * Calculates the new quality of the item.
-     * add 1 if sellIn date is not passed,
-     * add 2 if sellIn date is passed
-     * quality has a max value of 50
-     *
-     * @param item agedBrie
-     * @return new calculated quality value
-     */
     private int calculateQuality(Item item) {
         int qualityGained = isSellInDatePassed(item.sellIn) ? 2 : 1;
         return increaseQualityUntilMaximum(item.quality, qualityGained);

@@ -13,15 +13,6 @@ public class NormalItemHandler implements ItemHandler {
         item.quality = calculateQuality(item);
     }
 
-    /**
-     * Calculates the new quality of the item.
-     * lost 1 if sellIn date is not passed,
-     * lost 2 if sellIn date is passed
-     * quality has a min value of 0
-     *
-     * @param item a normalItem
-     * @return new calculated quality value
-     */
     private int calculateQuality(Item item) {
         int qualityLost = isSellInDatePassed(item.sellIn) ? 2 : 1;
         return decreaseQualityUntilMinimum(item.quality, qualityLost);
