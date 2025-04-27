@@ -2,7 +2,6 @@ package be.yorian.handler;
 
 import be.yorian.Item;
 
-import static be.yorian.util.GildedRoseUtils.decreaseQualityUntilMinimum;
 import static be.yorian.util.GildedRoseUtils.isSellInDatePassed;
 
 public class NormalItemHandler implements ItemHandler {
@@ -15,6 +14,6 @@ public class NormalItemHandler implements ItemHandler {
 
     private int calculateQuality(Item item) {
         int qualityLost = isSellInDatePassed(item.sellIn) ? 2 : 1;
-        return decreaseQualityUntilMinimum(item.quality, qualityLost);
+        return Math.max(item.quality - qualityLost, 0);
     }
 }

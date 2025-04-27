@@ -2,7 +2,7 @@ package be.yorian.handler;
 
 import be.yorian.Item;
 
-import static be.yorian.util.GildedRoseUtils.increaseQualityUntilMaximum;
+import static be.yorian.util.GildedRoseUtils.isSellInDatePassed;
 
 public class BackstagePassesHandler implements ItemHandler {
 
@@ -13,17 +13,21 @@ public class BackstagePassesHandler implements ItemHandler {
     }
 
     private int calculateQuality(Item item) {
-        int qualityGained;
-        if (item.sellIn > 10) {
-            qualityGained = 1;
-        } else if (item.sellIn > 5) {
-            qualityGained = 2;
-        } else if (item.sellIn > 0) {
-            qualityGained = 3;
-        } else {
-            return 0;
+        int qualityGained = 0;
+        if (isSellInDatePassed(item.sellIn)) {
+            return qualityGained;
         }
-        return increaseQualityUntilMaximum(item.quality, qualityGained);
+        if (item.sellIn >= 10) {
+            qualityGained +=1;
+        }
+        if (item.sellIn > 5 && item.sellIn < 10) {
+            qualityGained +=2;
+        }
+        if (item.sellIn <= 5) {
+            qualityGained += 3;
+        }
+
+        return Math.min(item.quality + qualityGained, 50);
     }
 
 

@@ -117,10 +117,10 @@ class GildedRoseTest {
 
     @Test
     void backstagePasses_increasesQualityBy1_whenSellInHigherThan10_test() {
-        GildedRose app = createGildedRoseWithBackstagePasses(12, 6);
+        GildedRose app = createGildedRoseWithBackstagePasses(11, 6);
         app.updateQuality();
         assertEquals(7, app.getItems()[0].quality);
-        assertEquals(11, app.getItems()[0].sellIn);
+        assertEquals(10, app.getItems()[0].sellIn);
     }
 
     @Test
