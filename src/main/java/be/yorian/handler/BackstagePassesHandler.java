@@ -20,10 +20,10 @@ public class BackstagePassesHandler implements ItemHandler {
         if (item.sellIn >= 10) {
             qualityGained +=1;
         }
-        if (item.sellIn > 5 && item.sellIn < 10) {
+        if (item.sellIn >= 5 && item.sellIn < 10) {
             qualityGained +=2;
         }
-        if (item.sellIn <= 5) {
+        if (item.sellIn < 5) {
             qualityGained += 3;
         }
 
