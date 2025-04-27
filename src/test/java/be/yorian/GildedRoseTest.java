@@ -12,28 +12,28 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class GildedRoseTest {
 
     @Test
-    void normalItem_decreasesInQuality_test() {
+    void normalItem_decreasesInQuality() {
         GildedRose app = createGildedRoseWithNormalItem(5, 10);
         app.updateQuality();
         assertEquals(9, app.getItems()[0].quality);
     }
 
     @Test
-    void normalItem_decreasesTwiceInQuality_whenSellInIsPassed_test() {
+    void normalItem_decreasesTwiceInQuality_whenSellInIsPassed() {
         GildedRose app = createGildedRoseWithNormalItem(0, 10);
         app.updateQuality();
         assertEquals(8, app.getItems()[0].quality);
     }
 
     @Test
-    void normalItem_decreasesInQuality_butNeverNegative_test() {
+    void normalItem_decreasesInQuality_butNeverNegative() {
         GildedRose app = createGildedRoseWithNormalItem(0, 1);
         app.updateQuality();
         assertEquals(0, app.getItems()[0].quality);
     }
 
     @Test
-    void normalItem_doNotDecreasesQuality_whenQualityIsPassed_test() {
+    void normalItem_doNotDecreasesQuality_whenQualityIsPassed() {
         GildedRose app = createGildedRoseWithNormalItem(0, 0);
         app.updateQuality();
         assertEquals(0, app.getItems()[0].quality);
@@ -41,28 +41,28 @@ class GildedRoseTest {
     }
 
     @Test
-    void agedBrie_increasesInQuality_test() {
+    void agedBrie_increasesInQuality() {
         GildedRose app = createGildedRoseWithAgedBrie(2, 10);
         app.updateQuality();
         assertEquals(11, app.getItems()[0].quality);
     }
 
     @Test
-    void agedBrie_MaxQualityIs50_test() {
+    void agedBrie_MaxQualityIs50() {
         GildedRose app = createGildedRoseWithAgedBrie(2, 50);
         app.updateQuality();
         assertEquals(50, app.getItems()[0].quality);
     }
 
     @Test
-    void agedBrie_MaxQualityIs50_whenSellInIsPassed_test() {
+    void agedBrie_MaxQualityIs50_whenSellInIsPassed() {
         GildedRose app = createGildedRoseWithAgedBrie(0, 50);
         app.updateQuality();
         assertEquals(50, app.getItems()[0].quality);
     }
 
     @Test
-    void agedBrie_IncreaseQualityByTwo_whenSellInIsPassed_test() {
+    void agedBrie_IncreaseQualityByTwo_whenSellInIsPassed() {
         GildedRose app = createGildedRoseWithAgedBrie(-1, 10);
         app.updateQuality();
         assertEquals(12, app.getItems()[0].quality);
@@ -70,14 +70,14 @@ class GildedRoseTest {
     }
 
     @Test
-    void agedBrie_decreasesSellIn_test() {
+    void agedBrie_decreasesSellIn() {
         GildedRose app = createGildedRoseWithAgedBrie(2, 10);
         app.updateQuality();
         assertEquals(1, app.getItems()[0].sellIn);
     }
 
     @Test
-    void sulfuras_qualityNeverChanges_test() {
+    void sulfuras_qualityNeverChanges() {
         GildedRose app = createGildedRoseWithSulfuras(2, 80);
         app.updateQuality();
         assertEquals(80, app.getItems()[0].quality);
@@ -85,7 +85,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void sulfuras_qualityNeverChanges_whenSellInIsPassed_test() {
+    void sulfuras_qualityNeverChanges_whenSellInIsPassed() {
         GildedRose app = createGildedRoseWithSulfuras(-1, 80);
         app.updateQuality();
         assertEquals(80, app.getItems()[0].quality);
@@ -93,14 +93,14 @@ class GildedRoseTest {
     }
 
     @Test
-    void backstagePasses_decreasesSellIn_test() {
+    void backstagePasses_decreasesSellIn() {
         GildedRose app = createGildedRoseWithBackstagePasses(2, 10);
         app.updateQuality();
         assertEquals(1, app.getItems()[0].sellIn);
     }
 
     @Test
-    void backstagePasses_increasesQualityBy2_whenSellInBetween10And5_test() {
+    void backstagePasses_increasesQualityBy2_whenSellInBetween10And5() {
         GildedRose app = createGildedRoseWithBackstagePasses(8, 6);
         app.updateQuality();
         assertEquals(8, app.getItems()[0].quality);
@@ -108,7 +108,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void backstagePasses_increasesQualityBy3_whenSellInLowerThan5_test() {
+    void backstagePasses_increasesQualityBy3_whenSellInLowerThan5() {
         GildedRose app = createGildedRoseWithBackstagePasses(4, 6);
         app.updateQuality();
         assertEquals(9, app.getItems()[0].quality);
@@ -116,7 +116,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void backstagePasses_increasesQualityBy1_whenSellInHigherThan10_test() {
+    void backstagePasses_increasesQualityBy1_whenSellInHigherThan10() {
         GildedRose app = createGildedRoseWithBackstagePasses(11, 6);
         app.updateQuality();
         assertEquals(7, app.getItems()[0].quality);
@@ -124,28 +124,28 @@ class GildedRoseTest {
     }
 
     @Test
-    void backstagePasses_maxQualityIs50_test() {
+    void backstagePasses_maxQualityIs50() {
         GildedRose app = createGildedRoseWithBackstagePasses(4, 49);
         app.updateQuality();
         assertEquals(50, app.getItems()[0].quality);
     }
 
     @Test
-    void backstagePasses_qualityIs0AfterConcert_test() {
+    void backstagePasses_qualityIs0AfterConcert() {
         GildedRose app = createGildedRoseWithBackstagePasses(0, 10);
         app.updateQuality();
         assertEquals(0, app.getItems()[0].quality);
     }
 
     @Test
-    void conjuredItem_decreasesSellIn_test() {
+    void conjuredItem_decreasesSellIn() {
         GildedRose app = createGildedRoseWithConjuredItem(2, 10);
         app.updateQuality();
         assertEquals(1, app.getItems()[0].sellIn);
     }
 
     @Test
-    void conjuredItem_decreasesQuality_test() {
+    void conjuredItem_decreasesQuality() {
         GildedRose app = createGildedRoseWithConjuredItem(2, 10);
         app.updateQuality();
         assertEquals(1, app.getItems()[0].sellIn);
@@ -153,7 +153,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void conjuredItem_minQualityIs0_test() {
+    void conjuredItem_minQualityIs0() {
         GildedRose app = createGildedRoseWithConjuredItem(2, 0);
         app.updateQuality();
         assertEquals(1, app.getItems()[0].sellIn);
@@ -161,13 +161,11 @@ class GildedRoseTest {
     }
 
     @Test
-    void conjuredItem_decreasesTwiceInQuality_whenSellInIsPassed_test() {
+    void conjuredItem_decreasesTwiceInQuality_whenSellInIsPassed() {
         GildedRose app = createGildedRoseWithConjuredItem(0, 10);
         app.updateQuality();
         assertEquals(-1, app.getItems()[0].sellIn);
         assertEquals(6, app.getItems()[0].quality);
     }
-
-
 
 }
